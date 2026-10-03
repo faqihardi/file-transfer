@@ -40,7 +40,7 @@ private val DarkColorScheme = darkColorScheme(
 @Composable
 fun FileTransferTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    @Suppress("UNUSED_PARAMETER") dynamicColor: Boolean = false, // dipertahankan agar @Preview lama tetap compile; selalu palet statis
+    @Suppress("UNUSED_PARAMETER") dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
