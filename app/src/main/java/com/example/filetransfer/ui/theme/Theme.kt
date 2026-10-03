@@ -19,7 +19,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = md_onSurface_light,
     surfaceVariant = md_surfaceVariant_light,
     outline = md_outline_light,
-    error = md_error_light
+    error = md_error
 )
 
 private val DarkColorScheme = darkColorScheme(

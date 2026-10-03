@@ -32,9 +32,9 @@ val md_onSurface_dark = Color(0xFFE0E0E0)
 val md_surfaceVariant_dark = Color(0xFF2C2C2C)
 val md_outline_dark = Color(0xFF8F8F8F)
 
-val md_success_light = Color(0xFF2E7D32)
-val md_error_light = Color(0xFFB3261E)
-val md_warning_light = Color(0xFF8F5000)
+val md_success = Color(0xFF2E7D32)
+val md_error = Color(0xFFB3261E)
+val md_warning = Color(0xFF8F5000)
 
 val md_success_dark = Color(0xFF81C995)
 val md_error_dark = Color(0xFFF2B8B5)
@@ -48,9 +48,9 @@ data class SemanticColorScheme(
 )
 
 val LightSemanticColors = SemanticColorScheme(
-    success = md_success_light,
-    error = md_error_light,
-    warning = md_warning_light
+    success = md_success,
+    error = md_error,
+    warning = md_warning
 )
 
 val DarkSemanticColors = SemanticColorScheme(
