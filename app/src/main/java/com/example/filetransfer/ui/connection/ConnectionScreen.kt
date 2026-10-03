@@ -45,6 +45,22 @@ fun ConnectionScreen(
     viewModel: ConnectionViewModel = hiltViewModel(),
     onNavigateToTransfer: () -> Unit = {}
 ) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    
+    val permissionsToRequest = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+        arrayOf(android.Manifest.permission.NEARBY_WIFI_DEVICES)
+    } else {
+        arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+    }
+
+    val permissionLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+        androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions()
+    ) { }
+
+    androidx.compose.runtime.LaunchedEffect(Unit) {
+        permissionLauncher.launch(permissionsToRequest)
+    }
+
     val prerequisiteState by viewModel.prerequisiteState.collectAsStateWithLifecycle()
     val connectionState by viewModel.connectionState.collectAsStateWithLifecycle()
     val peers by viewModel.peers.collectAsStateWithLifecycle()
@@ -149,7 +165,12 @@ fun ConnectionScreen(
                                 Text("Pastikan Wi-Fi, Lokasi, dan Izin Aplikasi diaktifkan.", color = TextDark, fontSize = 14.sp)
                                 Spacer(modifier = Modifier.height(8.dp))
                                 OutlinedButton(
-                                    onClick = { /* Implement Settings Intent */ },
+                                    onClick = {
+                                        val intent = android.content.Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                            data = android.net.Uri.fromParts("package", context.packageName, null)
+                                        }
+                                        context.startActivity(intent)
+                                    },
                                     colors = ButtonDefaults.outlinedButtonColors(contentColor = DangerRed),
                                     border = androidx.compose.foundation.BorderStroke(1.dp, DangerRed),
                                     modifier = Modifier.align(Alignment.End),
@@ -335,12 +356,6 @@ fun SpeedInfoCard() {
             Column(modifier = Modifier.weight(1f)) {
                 Text("KECEPATAN MAKSIMAL", color = TextGray, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                 Text("Wi-Fi Direct 5GHz", color = TextDark, fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                Spacer(modifier = Modifier.height(4.dp))
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Box(modifier = Modifier.size(6.dp).clip(CircleShape).background(SuccessGreen))
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text("Kanal lokal aman • Tanpa kuota internet", color = TextGray, fontSize = 12.sp)
-                }
             }
             Box(
                 modifier = Modifier
