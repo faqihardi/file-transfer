@@ -2,66 +2,37 @@ package com.example.filetransfer.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.filetransfer.R
 
-// Set of Material typography styles to start with
+val Poppins = FontFamily(
+    Font(R.font.poppins_regular, FontWeight.Normal),
+    Font(R.font.poppins_medium, FontWeight.Medium)
+)
+
 val Typography = Typography(
-    headlineSmall = androidx.compose.ui.text.TextStyle(
-        fontSize = 24.sp,
-        lineHeight = 32.sp,
-        fontWeight = FontWeight.Medium
+    headlineSmall = TextStyle(
+        fontFamily = Poppins, fontSize = 24.sp, lineHeight = 32.sp, fontWeight = FontWeight.Medium
     ),
-
-    titleLarge = androidx.compose.ui.text.TextStyle(
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        fontWeight = FontWeight.Medium
-    ),
-
-    titleMedium = androidx.compose.ui.text.TextStyle(
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        fontWeight = FontWeight.Medium
-    ),
-
-    bodyLarge = androidx.compose.ui.text.TextStyle(
-        fontSize = 16.sp,
-        lineHeight = 24.sp
-    ),
-
-    bodyMedium = androidx.compose.ui.text.TextStyle(
-        fontSize = 14.sp,
-        lineHeight = 20.sp
-    ),
-
-    labelLarge = androidx.compose.ui.text.TextStyle(
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        fontWeight = FontWeight.Medium
-    ),
-
-    labelSmall = androidx.compose.ui.text.TextStyle(
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        fontWeight = FontWeight.Medium
-    )
-
-    /* Other default text styles to override
     titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
+        fontFamily = Poppins, fontSize = 22.sp, lineHeight = 28.sp, fontWeight = FontWeight.Medium
+    ),
+    titleMedium = TextStyle(
+        fontFamily = Poppins, fontSize = 16.sp, lineHeight = 24.sp, fontWeight = FontWeight.Medium
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = Poppins, fontSize = 16.sp, lineHeight = 24.sp, fontWeight = FontWeight.Normal
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = Poppins, fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Normal
+    ),
+    labelLarge = TextStyle(
+        fontFamily = Poppins, fontSize = 14.sp, lineHeight = 20.sp, fontWeight = FontWeight.Medium
     ),
     labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
+        fontFamily = Poppins, fontSize = 11.sp, lineHeight = 16.sp, fontWeight = FontWeight.Medium
     )
-    */
 )
